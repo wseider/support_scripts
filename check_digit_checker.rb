@@ -1,5 +1,3 @@
-class 
-
 def check_digit_checker(input)
     input_array = input.split("").map {|i| i.to_i}
     check_digit = input_array.slice(-1)
