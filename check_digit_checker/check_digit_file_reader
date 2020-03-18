@@ -1,0 +1,10 @@
+require 'csv'
+require 'pry'
+
+def file_reader(input_file)
+    File.foreach(input_file) do |line|
+    puts line.class
+    end 
+end 
+
+file_reader('input_files/test.txt')

@@ -12,4 +12,4 @@ def check_digit_checker(input)
     end 
 end
 
-check_digit_checker("044600325122")
+check_digit_checker("00044600325125")
