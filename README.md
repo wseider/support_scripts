@@ -4,10 +4,11 @@ CONTENTS:
     -Check digit validator/creator: check_digit_checker.rb
     -adding optparse and refactoring reader/writer
     -add api client usability?
+    
     -Check Digit Script usage:
         -clone this repo
         -pull GTINs (or UPCs) from export file into a single column, no header CSV or .txt file delimited by \n
-            -I will add header reading functionality if people are really up in arms about it but doesn't seem terrible important
+            -I will add header reading functionality if people are really up in arms about it but doesn't seem terribly important
         -Navigate to check_digit_checker/check_digit_script.rb line 55 which will read: 
         `run.write_newfile('input_files/test.csv')`
         -to read the outputs locally in your terminal without creating a new file change line 55 to this and save:
