@@ -26,13 +26,24 @@ class Checker_script
             odd_output = working_array.values_at(* working_array.each_index.select {|i| i.even?}).reduce{|sum, i| sum + i} * 3
             total_output = working_array.values_at(* working_array.each_index.select {|i| i.odd?}).reduce{|sum, i| sum + i} + odd_output
             output_check_digit = if total_output % 10 == 0 then 0 else 10 - (total_output % 10) end 
-            puts input.gsub(/.{1}$/, "#{output_check_digit}")
+            input.gsub!(/.{1}$/, "#{output_check_digit}")
     end 
     
     
-    def file_reader(input_file)
+    def dry_run(input_file)
         File.foreach(input_file) do |line|
         check_digit_checker(line)
+        end 
+    end 
+
+    def write_newfile(input_file)
+        output = []
+        File.foreach(input_file) do |line|
+        output << check_digit_writer(line).gsub(/\n/, "")
+        CSV.open('output_files/correct_checks.csv', 'w', converters: :numeric) {|f|  
+                f << output
+                }
+        
         end 
     end 
     
@@ -41,4 +52,4 @@ class Checker_script
 end 
 
 run = Checker_script.new
-run.file_reader('input_files/newtest.txt')
+run.write_newfile('input_files/test.csv')
