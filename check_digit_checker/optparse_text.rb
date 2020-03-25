@@ -103,7 +103,6 @@ class Checker_script
       CSV.open('output_files/correct_checks.csv', 'w', converters: :numeric) {|f|  
               f << output
               }
-      
       end 
   end 
 end
