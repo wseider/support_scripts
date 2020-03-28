@@ -1,16 +1,22 @@
 Repo for various scripts to be used or tested by support team members
 
 CONTENTS:
+<<<<<<< HEAD
 
 1. CHECK DIGIT SCRIPT
     POSSIBLE UPGRADES/IN PROGRESS WORK:
     -adding optparse and refactoring reader/writer (IN PROGRESS)
+=======
+    
+    -Check digit validator/creator: check_digit_checker.rb
+    -adding optparse and refactoring reader/writer
+>>>>>>> 0fdb5273700811a42d768d6dce55aa7fb88ceaed
     -add api client usability?
     
     -Check Digit Script usage:
         -clone this repo
         -pull GTINs (or UPCs) from export file into a single column, no header CSV or .txt file delimited by \n
-            -I will add header reading functionality if people are really up in arms about it but doesn't seem terrible important
+            -I will add header reading functionality if people are really up in arms about it but doesn't seem terribly important
         -Navigate to check_digit_checker/check_digit_script.rb line 55 which will read: 
         `run.write_newfile('input_files/test.csv')`
         -to read the outputs locally in your terminal without creating a new file change line 55 to this and save:
@@ -22,6 +28,7 @@ CONTENTS:
         -`willseider-JGH5:support_scripts willseider$ ruby /Users/willseider/support_scripts/check_digit_checker/check_digit_script.rb`
 
         -If you generate an output file, simply overwrite the GTIN or UPC column in your import file with the output column
+<<<<<<< HEAD
 
 2. BULK DELETE VIEWS SCRIPT 
     -POSSIBLE UPGRADES/IN PROGRESS WORK:
@@ -37,3 +44,6 @@ CONTENTS:
         -save script file and run in terminal, example:
         willseider-JGH5:support_scripts willseider$ ruby /Users/willseider/support_scripts/bulk_delete_views/delete_views.rb
         -if your information above is correct (org id and api key), you will return a series of 204s
+=======
+    
+>>>>>>> 0fdb5273700811a42d768d6dce55aa7fb88ceaed
