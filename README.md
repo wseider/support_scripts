@@ -1,9 +1,12 @@
 Repo for various scripts to be used or tested by support team members
 
 CONTENTS:
-    -Check digit validator/creator: check_digit_checker.rb
-    -adding optparse and refactoring reader/writer
+
+1. CHECK DIGIT SCRIPT
+    POSSIBLE UPGRADES/IN PROGRESS WORK:
+    -adding optparse and refactoring reader/writer (IN PROGRESS)
     -add api client usability?
+    
     -Check Digit Script usage:
         -clone this repo
         -pull GTINs (or UPCs) from export file into a single column, no header CSV or .txt file delimited by \n
@@ -19,4 +22,18 @@ CONTENTS:
         -`willseider-JGH5:support_scripts willseider$ ruby /Users/willseider/support_scripts/check_digit_checker/check_digit_script.rb`
 
         -If you generate an output file, simply overwrite the GTIN or UPC column in your import file with the output column
-    
+
+2. BULK DELETE VIEWS SCRIPT 
+    -POSSIBLE UPGRADES/IN PROGRESS WORK:
+        -add DBI capability so use of redash is unnecessary
+
+    -Bulk Delete Views Script Usage:
+        -clone this repo
+        -run redash query in redash_queries doc with your desired inputs to generate the script's input file (.csv)
+        -if your views have apostrophes in them, you will need to escape them, but redash arrays don't seem to like double quotes.  open the file in a text editor and use the regex search with this: (?<!^)'(?!,) 
+        -put another single quote in front of the unescaped single quote (though you will find the single quote at the end of the final item on the list, just go back and fix that)
+        -for method at the bottom: 
+        `DeleteViews.new('{user's salsify api key}', '{customer external org id}', '{csv filepath generated from redash query}')`
+        -save script file and run in terminal, example:
+        willseider-JGH5:support_scripts willseider$ ruby /Users/willseider/support_scripts/bulk_delete_views/delete_views.rb
+        -if your information above is correct (org id and api key), you will return a series of 204s
