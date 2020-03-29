@@ -5,3 +5,15 @@ select cast(id as varchar), name
 from perspectives
 where organization_id = '{org_id}'
 and name IN ('XXXXXXXXX')
+
+/*FOR BULK DELETE LISTS: procedure is the same as the above bulk delete views */
+select cast(id as varchar), name
+from lists
+where organization_id = 'XXXX'
+and name IN('XXXXX')
+
+/*FOR BULK DELETE CATALOGS: procedure is same as above two queries*/
+select cast(id as varchar), name
+from catalogs
+where organization_id = 'XXXX'
+and name IN(XXXXX) 
