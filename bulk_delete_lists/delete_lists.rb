@@ -44,5 +44,5 @@ class DeleteLists
 
 end 
 
-test_call = DeleteLists.new('fk9pFgdwgSYSM7GumTjqsu9f_GwgDtTACAM3QJ8J8vk', 's-f6336ced-19bf-463b-89cb-d70fc614d306', 'input_files/mccormick_lists.csv')
+test_call = DeleteLists.new('<api key>', '<external org id>', '<input csv filepath>')
 puts test_call.file_run
