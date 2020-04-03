@@ -16,4 +16,4 @@ and name IN('XXXXX')
 select cast(id as varchar), name
 from catalogs
 where organization_id = 'XXXX'
-and name IN(XXXXX) 
+and name IN('XXXXX') 
