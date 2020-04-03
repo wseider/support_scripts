@@ -1,6 +1,5 @@
 require 'csv'
-require 'pry'
-require 'optparse'
+
 
 class Checker_script
  
@@ -41,7 +40,7 @@ class Checker_script
         output = []
         CSV.foreach(input_file).map do |line|
         output << check_digit_writer(line[0]).gsub(/\n/, "")
-        CSV.open('output_files/correct_checks.csv', 'w', converters: :numeric) {|f|  
+        CSV.open('correct_checks.csv', 'w', converters: :numeric) {|f|  
                 f << output
                 }
         
@@ -53,4 +52,4 @@ class Checker_script
 end 
 
 run = Checker_script.new
-run.write_newfile('<input gtins file>')
+run.write_newfile('input_files/GTINS.csv')

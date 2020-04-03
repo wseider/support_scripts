@@ -1,7 +1,7 @@
 require "uri"
 require "net/http"
 require 'csv'
-require 'json'
+
 
 class DeleteLists
 
