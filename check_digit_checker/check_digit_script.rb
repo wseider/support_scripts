@@ -36,15 +36,17 @@ class Checker_script
         end 
     end 
 
+    
     def write_newfile(input_file)
         output = []
         CSV.foreach(input_file).map do |line|
         output << check_digit_writer(line[0]).gsub(/\n/, "")
-        CSV.open('correct_checks.csv', 'w', converters: :numeric) {|f|  
-                f << output
-                }
-        
+        CSV.open('correct_checks.csv', 'w', converters: :numeric, headers: false) do |f|
+            output.each do |x|
+            f << [x]
+            end 
         end 
+    end 
     end 
     
 
