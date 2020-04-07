@@ -23,6 +23,8 @@ CONTENTS:
 
         -If you generate an output file, simply overwrite the GTIN or UPC column in your import file with the output column
 
+        -https://labs.salsify.com/internal/bulk-update-ids can be used if this is a product ID property
+
 2. BULK DELETE VIEWS SCRIPT 
     -POSSIBLE UPGRADES/IN PROGRESS WORK:
         -add DBI capability so use of redash is unnecessary
