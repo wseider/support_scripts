@@ -46,5 +46,5 @@ class UpdateChannelNames
 
 end 
 
-test_call = UpdateChannelNames.new('e6b30f3b779693421e6cd013a782fbfc71332b3bb09bcba99bc9f06793941cd1', 's-ad7fef34-3bc9-4661-a9e1-c8af40c78ea2', 'input_files/channel_renaming.csv')
+test_call = UpdateChannelNames.new('<api key>', '<org_id>', 'file_path')
 puts test_call.file_run
