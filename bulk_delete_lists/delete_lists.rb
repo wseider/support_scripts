@@ -6,10 +6,11 @@ class DeleteLists
   attr_accessor :org, :load_file
   attr_reader :api_key
 
-  def initialize(user_token, org_external, load_file_path)
+  def initialize(user_token, org_external, load_file_path, superuser_org_id = nil)
     @api_key = user_token
     @org_id = org_external
     @load_file = load_file_path
+    @superuser_org_id = superuser_org_id
   end
 
   def make_request(list_to_delete)
@@ -21,6 +22,10 @@ class DeleteLists
     request = Net::HTTP::Delete.new(url)
     request['Content-Type'] = 'application/json'
     request['Authorization'] = "Bearer #{@api_key}"
+    if @superuser_org_id != nil 
+      request['x-auth-organization-ID'] = "#{@superuser_org_id}"
+    else nil 
+end 
 
     response = https.request(request)
     puts response.read_body
@@ -38,5 +43,5 @@ class DeleteLists
   end
 end
 
-test_call = DeleteLists.new('<api key>', '<external org id>', '<input csv filepath>')
+test_call = DeleteLists.new('<api key>', '<external org id>', '<input csv filepath>', 'optional_internal_org_id(superuser)')
 puts test_call.file_run

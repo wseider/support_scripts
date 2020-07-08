@@ -1,15 +1,17 @@
 require 'uri'
 require 'net/http'
 require 'csv'
+require 'json'
 
 class DeleteViews
-  attr_accessor :org, :load_file
-  attr_reader :api_key
+  attr_accessor :org_id, :load_file
+  attr_reader :api_key, :superuser_org_id
 
-  def initialize(user_token, org_external, load_file_path)
+  def initialize(user_token, org_external, load_file_path, superuser_org_id = nil)
     @api_key = user_token
     @org_id = org_external
     @load_file = load_file_path
+    @superuser_org_id = superuser_org_id
   end
 
   def make_request(view_to_delete)
@@ -21,6 +23,10 @@ class DeleteViews
     request = Net::HTTP::Delete.new(url)
     request['Content-Type'] = 'application/json'
     request['Authorization'] = "Bearer #{@api_key}"
+      if @superuser_org_id != nil 
+        request['x-auth-organization-ID'] = "#{@superuser_org_id}"
+      else nil 
+  end 
 
     response = https.request(request)
     puts response.read_body
@@ -38,5 +44,5 @@ class DeleteViews
   end
 end
 
-test_call = DeleteViews.new('<api_key>', '<org_id>', '<input_file>')
+test_call = DeleteViews.new('<api_key>', '<org_id>', 'input_files/test.csv', 'optional_internal_org_id(superuser)')
 puts test_call.file_run

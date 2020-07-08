@@ -45,5 +45,5 @@ class UpdateChannelNames
   end
 end
 
-test_call = UpdateChannelNames.new('<api_key>', '<org_id>', '<input_file>', '<optional_internal_org_id(superuser use)>')
+test_call = UpdateChannelNames.new('MtPTIM1veDdawVpD0GPTQktdVQ8CF_v8rtb8gi_MvLg', 's-ad7fef34-3bc9-4661-a9e1-c8af40c78ea2', 'input_files/test_cop.csv', '12208')
 puts test_call.file_run
