@@ -34,27 +34,21 @@ CONTENTS:
         -run redash query in redash_queries doc with your desired inputs to generate the script's input file (.csv)
         -if your views have apostrophes in them, you will need to escape them, but redash arrays don't seem to like double quotes.  open the file in a text editor and use the regex search with this: (?<!^)'(?!,) 
         -put another single quote in front of the unescaped single quote (though you will find the single quote at the end of the final item on the list, just go back and fix that)
-        -for method at the bottom: 
-        `DeleteViews.new('{user's salsify api key}', '{customer external org id}', '{csv filepath generated from redash query}')`
-        -save script file and run in terminal, example:
-        willseider-JGH5:support_scripts willseider$ ruby /Users/willseider/support_scripts/bulk_delete_views/delete_views.rb
-        -if your information above is correct (org id and api key, valid list id), you will return a series of 204s
+        -Run the script in CLI like so: $ ruby [script file path] [api key] [external org id] [load file path] [OPTIONAL superuser id if running as superuser]
 
 3. BULK DELETE LISTS SCRIPT:
     -POSSIBLE UPDATES/WIP:
         -better error handling for the 422's, including list name and an investigation of how to pre (or post) vet references of the entities
         -add DBI capability to cut out redash
         -make housecleaning script one (with cli option parsing to differentiate)
+        
 
     -Bulk Delete Lists Script Usage:
         -clone this repo
         -run redash query in redash_queries doc with your desired inputs to generate the script's input file (.csv)
         -if your lists have apostrophes in them, you will need to escape them, but redash arrays don't seem to like double quotes.  open the file in a text editor and use the regex search with this: (?<!^)'(?!,) 
         -put another single quote in front of the unescaped single quote (though you will find the single quote at the end of the final item on the list, just go back and fix that)
-        -for method at the bottom: 
-        `DeleteLists.new('{user's salsify api key}', '{customer external org id}', '{csv filepath generated from redash query}')`
-        -save script file and run in terminal, example:
-        willseider-JGH5:support_scripts willseider$ ruby /Users/willseider/support_scripts/bulk_delete_views/delete_lists.rb
+        -Run the script in CLI like so: $ ruby [script file path] [api key] [external org id] [load file path] [OPTIONAL superuser id if running as superuser]
         -if your information above is correct (org id and api key, valid list id), you will return a series of 204s.  one caveat to this is if lists are referenced in other entities (likely workflows, filters, etc) you will return a: 
             `422 {"errors":["This list is referenced by other entities and cannot be deleted at this time."]}`
         -if you hit this error, the script will still run as this is not an exception that you might hit with the formatting of the script input, which would be rescued, but part of the response
@@ -68,9 +62,6 @@ CONTENTS:
         -run redash query in redash_queries doc with your desired inputs to generate the script's input file (.csv)
         -if your catalogs have apostrophes in them, you will need to escape them, but redash arrays don't seem to like double quotes.  open the file in a text editor and use the regex search with this: (?<!^)'(?!,) 
         -put another single quote in front of the unescaped single quote (though you will find the single quote at the end of the final item on the list, just go back and fix that)
-        -for method at the bottom: 
-        `DeleteCatalogs.new('{user's salsify api key}', '{customer external org id}', '{csv filepath generated from redash query}')`
-        -save script file and run in terminal, example:
-        willseider-JGH5:support_scripts willseider$ ruby /Users/willseider/support_scripts/bulk_delete_views/delete_catalogs.rb
+        -Run the script in CLI like so: $ ruby [script file path] [api key] [external org id] [load file path] [OPTIONAL superuser id if running as superuser]
         -if your information above is correct (org id and api key, valid catalog id), you will return a series of 204s 
         
