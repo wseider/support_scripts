@@ -44,5 +44,9 @@ class DeleteViews
   end
 end
 
-test_call = DeleteViews.new('<api_key>', '<org_id>', 'input_files/test.csv', 'optional_internal_org_id(superuser)')
+user_token = ARGV[0]
+org_external = ARGV[1]
+load_file_path = ARGV[2]
+optional_superuser_org = ARGV[3]
+test_call = DeleteViews.new(user_token, org_external, load_file_path, optional_superuser_org)
 puts test_call.file_run

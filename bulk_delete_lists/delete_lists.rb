@@ -43,5 +43,9 @@ end
   end
 end
 
-test_call = DeleteLists.new('<api key>', '<external org id>', '<input csv filepath>', 'optional_internal_org_id(superuser)')
+user_token = ARGV[0]
+org_external = ARGV[1]
+load_file_path = ARGV[2]
+optional_superuser_org = ARGV[3]
+test_call = DeleteLists.new(user_token, org_external, load_file_path, optional_superuser_org)
 puts test_call.file_run

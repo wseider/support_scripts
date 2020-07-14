@@ -3,6 +3,8 @@ require 'net/http'
 require 'csv'
 require 'json'
 
+
+
 class UpdateChannelNames
   attr_accessor :org, :load_file
   attr_reader :api_key, :superuser_org_id
@@ -45,5 +47,9 @@ class UpdateChannelNames
   end
 end
 
-test_call = UpdateChannelNames.new('MtPTIM1veDdawVpD0GPTQktdVQ8CF_v8rtb8gi_MvLg', 's-ad7fef34-3bc9-4661-a9e1-c8af40c78ea2', 'input_files/test_cop.csv', '12208')
+user_token = ARGV[0]
+org_external = ARGV[1]
+load_file_path = ARGV[2]
+optional_superuser_org = ARGV[3]
+test_call = UpdateChannelNames.new(user_token, org_external, load_file_path, optional_superuser_org)
 puts test_call.file_run

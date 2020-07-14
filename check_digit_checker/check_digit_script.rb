@@ -46,4 +46,4 @@ class Checker_script
 end
 
 run = Checker_script.new
-run.write_newfile('input_files/GTINS.csv')
+run.dry_run('input_files/GTINS.csv')
