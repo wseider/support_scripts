@@ -15,6 +15,7 @@ class DeleteViews
   end
 
   def make_request(view_to_delete)
+    responses = ["weeeeeeeee!", "GREAT SUCCESS!", "Big Victory!", "Major Key!", "ANOTHA ONE!"].sample
     url = URI("https://app.salsify.com/api/orgs/#{@org_id}/perspectives/#{view_to_delete}")
 
     https = Net::HTTP.new(url.host, url.port)
@@ -31,6 +32,10 @@ class DeleteViews
     response = https.request(request)
     puts response.read_body
     puts response.code
+    if response.code == '204'
+      puts "#{responses} #{view_to_delete} eliminated!"
+    else puts "Deletion failed...#{view_to_delete} lives to fight another day!"
+    end 
   rescue StandardError => e
     puts "failed #{e}"
     nil

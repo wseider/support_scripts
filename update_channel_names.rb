@@ -17,6 +17,7 @@ class UpdateChannelNames
   end
 
   def make_request(channel_to_update, new_name)
+    responses = ["weeeeeeeee!", "GREAT SUCCESS!", "Big Victory!", "Mission Accomplished!", "Major Key!", "ANOTHA ONE!"].sample
     url = URI("https://app.salsify.com/api/orgs/#{@org_id}/channels/#{channel_to_update}?serialize_system_ids=true")
 
     https = Net::HTTP.new(url.host, url.port)
@@ -34,6 +35,10 @@ class UpdateChannelNames
     response = https.request(request)
     puts response.read_body
     puts response.code
+    if response.code == '204'
+      puts "#{responses} #{channel_to_update} renamed to #{new_name}"
+    else puts "Renaming failed...Sad!"
+    end 
   rescue StandardError => e
     puts "failed #{e}"
     nil

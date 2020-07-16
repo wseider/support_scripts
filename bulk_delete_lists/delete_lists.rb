@@ -14,6 +14,7 @@ class DeleteLists
   end
 
   def make_request(list_to_delete)
+    responses = ["weeeeeeeee!", "GREAT SUCCESS!", "Big Victory!", "Major Key!", "ANOTHA ONE!"].sample
     url = URI("https://app.salsify.com/api/orgs/#{@org_id}/lists/#{list_to_delete}")
 
     https = Net::HTTP.new(url.host, url.port)
@@ -30,6 +31,10 @@ end
     response = https.request(request)
     puts response.read_body
     puts response.code
+    if response.code == '204'
+      puts "#{responses} #{list_to_delete} eliminated!"
+    else puts "Deletion failed...#{list_to_delete} lives to fight another day!"
+    end 
   rescue StandardError => e
     puts "failed #{e}"
     nil
