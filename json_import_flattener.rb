@@ -3,7 +3,11 @@ require 'pry'
 
 class FileFun 
 
-  MAPPINGS = {}
+  MAPPINGS = {
+                "salsify_id" => "Part Number", 
+                
+            
+            }
 
   def initialize(input_file)
     @input_file = input_file
